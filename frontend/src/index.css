@@ -1,0 +1,13 @@
+    @import "tailwindcss";
+
+    @keyframes leftArc {
+    0% { transform: translate(0, 0); opacity: 1; }
+    70% { transform: translate(var(--dx), var(--dy)); opacity: 1; }
+    100% { transform: translate(calc(var(--dx)*1.2), calc(var(--dy)*0.8)); opacity: 0; }
+    }
+
+    @keyframes rightArc {
+    0% { transform: translate(0, 0); opacity: 1; }
+    70% { transform: translate(calc(var(--dx)*-1), var(--dy)); opacity: 1; }
+    100% { transform: translate(calc(var(--dx)*-1.2), calc(var(--dy)*0.8)); opacity: 0; }
+    }

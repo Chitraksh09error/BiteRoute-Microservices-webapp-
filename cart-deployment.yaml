@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cart
+  template:
+    metadata:
+      labels:
+        app: cart
+    spec:
+      containers:
+      - name: cart
+        image: cart:latest
+        imagePullPolicy: Never   # ✅ IMPORTANT FIX (ECR ACCESS)
+        ports:
+        - containerPort: 5001
+        env:
+        - name: MONGO_URL
+          value: mongodb://mongo-service:27017/fooddb

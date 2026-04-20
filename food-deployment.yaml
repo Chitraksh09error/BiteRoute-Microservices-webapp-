@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: food
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: food
+  template:
+    metadata:
+      labels:
+        app: food
+    spec:
+      containers:
+      - name: food
+        image: food:latest
+        imagePullPolicy: Never   # ✅ IMPORTANT FIX (ECR ACCESS)
+        ports:
+        - containerPort: 5002
+        env:
+        - name: MONGO_URL
+          value: mongodb://mongo-service:27017/fooddb
